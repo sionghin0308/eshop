@@ -1,4 +1,4 @@
-package com.application.fruitaddict.respository.postgres;
+package com.application.demo.respository.postgres;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.application.fruitaddict.entity.postgres.UserInformation;
+import com.application.demo.entity.postgres.UserInformation;
 
 
 @Repository

@@ -1,13 +1,13 @@
-package com.application.fruitaddict;
+package com.application.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FruitAddictApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FruitAddictApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }

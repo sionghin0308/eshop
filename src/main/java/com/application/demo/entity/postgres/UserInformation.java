@@ -1,4 +1,4 @@
-package com.application.fruitaddict.entity.postgres;
+package com.application.demo.entity.postgres;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

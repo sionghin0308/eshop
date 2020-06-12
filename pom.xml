@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.application</groupId>
-	<artifactId>fruitaddict</artifactId>
+	<artifactId>demo</artifactId>
 	<version>1.0.0</version>
-	<name>fruitaddict</name>
-	<description>Fruit Addict project for Spring Boot</description>
+	<name>demo</name>
+	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>

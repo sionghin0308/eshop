@@ -1,4 +1,4 @@
-package com.application.fruitaddict.configuration;
+package com.application.demo.configuration;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class PostgresDatabaseConfiguration {
 
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		// Package contain entity classes
-		factoryBean.setPackagesToScan(new String[] { "com.application.fruitaddict.entity.postgres" });
+		factoryBean.setPackagesToScan(new String[] { "com.application.demo.entity.postgres" });
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setHibernateProperties(properties);
 		factoryBean.afterPropertiesSet();
