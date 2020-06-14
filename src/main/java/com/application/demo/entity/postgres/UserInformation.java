@@ -14,20 +14,38 @@ import lombok.Setter;
  * 
  */
 @Entity
-@Table(name="USERINFORMATION")
+@Table(name="UserInformation")
 @Getter
 @Setter
 public class UserInformation {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="USERNAME")
+	@Column(name="UserID")
+	private String userId;
+	
+	@Column(name="Username")
 	private String username;
 	
-	@Column(name="PASSWORD")
+	@Column(name="Password")
 	private String password;
 	
-	@Transient
-	private String name;
+	@Column(name="LastName")
+	private String lastName;
+	
+	@Column(name="FirstName")
+	private String firstName;
+	
+	@Column(name="Address")
+	private String address;
+	
+	@Column(name="Email")
+	private String email;
+	
+	@Column(name="ContactNo")
+	private String contactNo;
+	
+	@Column(name="Roles")
+	private String roles;
 
 }

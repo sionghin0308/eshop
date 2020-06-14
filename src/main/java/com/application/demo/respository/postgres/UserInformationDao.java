@@ -25,28 +25,23 @@ public class UserInformationDao {
 	@Qualifier(value = "sessionFactory")
 	private SessionFactory sessionFactory;
 
-	private final static Logger logger = LoggerFactory.getLogger(UserInformationDao.class);
-
 	/**
-	 * Get User Information List from table User
+	 * Get User Detail by Login from table User Information
 	 * 
-	 * @return User Information List
+	 * @return User Information
 	 */
-	public List<UserInformation> getUserInformationList() {
+	public UserInformation getUserDetailByLogin(String username, String password){
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "SELECT USERNAME, PASSWORD FROM USERINFORMATION";
-		Query query = session.createSQLQuery(sql);
-
-		List<Object[]> result = query.getResultList();
-		
-		if(!CollectionUtils.isEmpty(result)) {
-			return result.stream() .map(a->{
-				UserInformation userInformation = new UserInformation();
-				userInformation.setName((String) a[0]);
-				userInformation.setPassword((String) a[1]);
-				return userInformation;
-			}).collect(Collectors.toList());
-		} else { 
+		String sql = "from UserInformation where username=:username and password=:password";
+		Query query = session.createQuery(sql, UserInformation.class);
+		query.setParameter("username", username);
+		query.setParameter("password", password);
+	
+		UserInformation userDetail = new UserInformation();
+		if(!CollectionUtils.isEmpty(query.getResultList())){
+			userDetail = (UserInformation) query.getResultList().get(0);
+			return userDetail;
+		}else{
 			return null;
 		}
 	}
