@@ -41,7 +41,7 @@ public class DemoController extends LoginController {
 	
 	@GetMapping(value="/home")
 	public ModelAndView getHomePage(HttpServletRequest request) {
-		String page = "main";
+		String page = "index";
 		ModelAndView mv = new ModelAndView(page);
 		return mv;
 	}
