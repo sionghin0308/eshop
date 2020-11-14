@@ -1,4 +1,4 @@
-package com.application.demo.entity.postgres;
+package com.application.eshop.entity.postgres;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

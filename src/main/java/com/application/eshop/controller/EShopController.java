@@ -1,4 +1,4 @@
-package com.application.demo.controller;
+package com.application.eshop.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.application.demo.entity.postgres.UserInformation;
-import com.application.demo.services.UserInformationService;
+import com.application.eshop.entity.postgres.UserInformation;
+import com.application.eshop.services.UserInformationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping(value = "/page")
-public class DemoController extends LoginController {
+public class EShopController {
 	
 	@Autowired
 	private UserInformationService userInformationService;
@@ -31,10 +31,6 @@ public class DemoController extends LoginController {
 	@GetMapping(value="/login")
 	public ModelAndView getLoginPage(HttpServletRequest request) {
 		String page = "login";
-		if(isDemoUser(request)){
-			page="redirect:/page/home";
-		}
-		
 		ModelAndView mv = new ModelAndView(page);
 		return mv;
 	}

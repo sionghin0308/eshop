@@ -1,10 +1,10 @@
-package com.application.demo.services;
+package com.application.eshop.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.application.demo.entity.postgres.UserInformation;
-import com.application.demo.respository.postgres.UserInformationDao;
+import com.application.eshop.entity.postgres.UserInformation;
+import com.application.eshop.respository.postgres.UserInformationDao;
 
 @Service("userInformationService")
 public class UserInformationService {

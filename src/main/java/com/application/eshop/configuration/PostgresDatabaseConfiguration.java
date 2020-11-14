@@ -1,4 +1,4 @@
-package com.application.demo.configuration;
+package com.application.eshop.configuration;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
