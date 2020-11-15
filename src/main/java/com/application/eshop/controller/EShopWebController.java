@@ -1,4 +1,4 @@
-package com.application.eshop.controller;
+/*package com.application.eshop.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,17 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.application.eshop.entity.postgres.UserInformation;
-import com.application.eshop.services.UserInformationService;
+import com.application.eshop.services.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping(value = "/page")
-public class EShopController {
+public class EShopWebController {
 	
 	@Autowired
-	private UserInformationService userInformationService;
+	private ProductService userInformationService;
 	
 	@GetMapping(value="/login")
 	public ModelAndView getLoginPage(HttpServletRequest request) {
@@ -49,25 +48,4 @@ public class EShopController {
 		return mv;
 	}
 	
-	@PostMapping(value="/login", consumes="application/json", produces="application/json")
-	public @ResponseBody String getUserLogin(@RequestBody UserInformation userLoginDetail,
-			HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException {
-		
-		Map<String, String> resMap = new HashMap<String,String>();
-		
-		UserInformation userDetail = new UserInformation();
-		userDetail = userInformationService.getUserDetailByLogin(userLoginDetail.getUsername(), userLoginDetail.getPassword());
-		
-		if(userDetail != null) {
-			Cookie cookie = new Cookie("username", userDetail.getUsername());
-			cookie.setMaxAge(60*60);
-			response.addCookie(cookie);
-			resMap.put("success", "User " + userDetail.getUsername() + " login successful!");
-		} else {
-			resMap.put("failure", "User " + userDetail.getUsername() + " fail to sign in!");
-		}
-		ObjectMapper objMapper = new ObjectMapper();
-		return objMapper.writeValueAsString(resMap);
-	}
-	
-}
+}*/

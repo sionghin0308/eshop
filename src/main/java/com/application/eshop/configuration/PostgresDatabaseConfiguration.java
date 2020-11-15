@@ -43,7 +43,7 @@ public class PostgresDatabaseConfiguration {
 
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		// Package contain entity classes
-		factoryBean.setPackagesToScan(new String[] { "com.application.demo.entity.postgres" });
+		factoryBean.setPackagesToScan(new String[] { "com.application.eshop.entity.postgres" });
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setHibernateProperties(properties);
 		factoryBean.afterPropertiesSet();
