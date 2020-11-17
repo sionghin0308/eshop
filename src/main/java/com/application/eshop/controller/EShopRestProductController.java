@@ -1,6 +1,9 @@
 package com.application.eshop.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +37,7 @@ public class EShopRestProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Cacheable(value="product-list-cache")
 	@GetMapping(value="/list")
 	@ApiOperation(value="Get Product List", notes="Get Product List")
 	public @ResponseBody List<Product> getProductList() {
@@ -44,6 +51,28 @@ public class EShopRestProductController {
 			emptyList.add(empty);
 			return emptyList;
 		}
+	}
+	
+	@CacheEvict(value="product-list-cache", allEntries=true)
+	@GetMapping(value="/list/updated")
+	@ApiOperation(value="Get Updated Product List", notes="Get Updated Product List")
+	public @ResponseBody List<Product> getUpdatedProductList() {
+		List<Product> result = productService.getProductList();
+		if(!CollectionUtils.isEmpty(result)) {
+			return result;
+		} else {
+			List<Product> emptyList = new ArrayList<>();
+			Product empty = new Product();
+			empty.setMessage(CommonMessage.PRODUCT_LIST_EMPTY.message);
+			emptyList.add(empty);
+			return emptyList;
+		}
+	}
+	
+	@Scheduled(cron = "0 0/1 * * * *")
+	@CacheEvict(value="product-list-cache", allEntries=true)
+	public void clearProductListCache() {
+		System.out.println("Product list cache clear");
 	}
 	
 	@GetMapping(value="/detail")
