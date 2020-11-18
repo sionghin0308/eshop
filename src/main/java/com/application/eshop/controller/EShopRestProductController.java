@@ -52,29 +52,7 @@ public class EShopRestProductController {
 			return emptyList;
 		}
 	}
-	
-	@CacheEvict(value="product-list-cache", allEntries=true)
-	@GetMapping(value="/list/updated")
-	@ApiOperation(value="Get Updated Product List", notes="Get Updated Product List")
-	public @ResponseBody List<Product> getUpdatedProductList() {
-		List<Product> result = productService.getProductList();
-		if(!CollectionUtils.isEmpty(result)) {
-			return result;
-		} else {
-			List<Product> emptyList = new ArrayList<>();
-			Product empty = new Product();
-			empty.setMessage(CommonMessage.PRODUCT_LIST_EMPTY.message);
-			emptyList.add(empty);
-			return emptyList;
-		}
-	}
-	
-	@Scheduled(cron = "0 0/1 * * * *")
-	@CacheEvict(value="product-list-cache", allEntries=true)
-	public void clearProductListCache() {
-		System.out.println("Product list cache clear");
-	}
-	
+		
 	@GetMapping(value="/detail")
 	@ApiOperation(value="Get Product Detail", notes="Get Product Detail")
 	public @ResponseBody Product getProductDetail(@RequestParam(value="productId") String productId) {
