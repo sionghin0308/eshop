@@ -175,6 +175,7 @@ public class EShopRestOrderListController {
 		return objMapper.writeValueAsString(resMap);
 	}
 	
+	@CacheEvict(value="product-list-cache", allEntries=true)
 	@GetMapping(value = "/submitOrder")
 	@ApiOperation(value = "Submit Order List", notes = "Submit Order List")
 	public @ResponseBody String submitOrderList(HttpServletRequest request, HttpServletResponse response) 
